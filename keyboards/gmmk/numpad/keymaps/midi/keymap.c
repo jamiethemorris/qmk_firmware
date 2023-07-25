@@ -96,16 +96,18 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 	// Normal macros
         case MACRO_0:
             if (record->event.pressed) {
-                // when MACRO(0) is pressed
-                tap_code16(LGUI(KC_LSFT));
-                tap_code(KC_F5);
+                register_code(KC_LGUI);
+				register_code(KC_LSFT);
+				tap_code(KC_F5);
+				unregister_code(KC_LSFT);
+				unregister_code(KC_LGUI);
             }
             return false;  // Skip all further processing of this key
         case MACRO_1:
             if (record->event.pressed) {
-                // when MACRO(1) is pressed
-                tap_code16(KC_LSFT);
-                tap_code(KC_F5);
+                register_code(KC_LSFT);
+				tap_code(KC_F5);
+				unregister_code(KC_LSFT);
             }
             return false;  // Skip all further processing of this key
 			
